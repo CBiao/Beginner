@@ -1,6 +1,6 @@
 //ASCII码排序
 
-#include <stdio.h>//别人那偷看了一眼，，反思，，
+#include <stdio.h>
 
 int main()
 {
