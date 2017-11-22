@@ -1,4 +1,39 @@
 //Max Sum
+////AC!!
+#include <stdio.h>
+
+int main()
+{
+	int t, i, j, k, n, head, tail, sum, max;
+	int a[100001];
+	scanf("%d", &t);
+	for(i=1;i<=t;i++){
+		scanf("%d", &n);
+		for(j=1;j<=n;j++){
+			scanf("%d", &a[j]);
+		}
+		head = tail = 1;
+		max = a[1];
+		for(j=1;j<=n;j++){
+			sum = 0;
+			for(k=j;k<=n;k++){
+				sum += a[k];
+				if(sum>max){
+					head = j;
+					tail = k;
+					max = sum;
+				}
+				if(sum<0)	break;
+			}
+		}
+		printf("Case %d:\n", i);
+		printf("%d %d %d\n", max, head, tail);
+		if(t-i) putchar('\n');
+	}
+	return 0;
+}
+
+
 
 //还是超出时间限制
 #include <stdio.h>
@@ -44,7 +79,7 @@ int main()
 
 
 
-/*超出时间限制  需要优化算法
+//超出时间限制  需要优化算法
 #include <stdio.h>
 
 int main()

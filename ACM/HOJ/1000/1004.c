@@ -1,4 +1,83 @@
 //Let the Balloon Rise
+//另一实现方法AC
+#include <stdio.h>
+#include <string.h>
+int main()
+{
+	int n, i, j, popest, flag;
+	char a[1000][16];
+	int b[1000] = {0};
+	while(scanf("%d", &n)==1&&n){
+		getchar();
+		popest = 0;
+		for(i=0;i<n;i++){
+            if(i){
+                b[i]=0;
+            }
+            else{
+                b[0] = 1;
+            }
+			gets(a[i]);
+			flag = 1;
+			for(j=0;j<i;j++){
+				if(!strcmp(a[j], a[i])){
+					b[j]++;
+					popest = b[popest]>=b[j]?popest:j;
+					flag = 0;
+					break;
+				}
+			}
+			if(flag&&i){
+                b[i]++;
+			}
+		}
+		puts(a[popest]);
+	}
+	return 0;
+}
+
+
+//重写 11/12 18点51分--19点36分 ---- AC!!!!
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+	int n, i, j, m, flag, popest;
+	char a[1000][16], b[1000][16];
+	int c[1000];
+	while(scanf("%d", &n)==1&&n>0&&n<=1000){
+		getchar();
+		for(i=0;i<n;i++){
+			gets(a[i]);
+			if(!i){
+				strcpy(b[0], a[0]);
+				c[0] = 1;
+				m = 1;
+				popest = 0;
+			}
+			else{
+				flag = 0;
+				for(j=0;j<m;j++){
+					if(!strcmp(a[i],b[j])){
+						c[j]++;
+						popest = c[popest]>=c[j]?popest:j;
+						flag = 1;
+						break;
+					}
+				}
+				if(!flag){
+					strcpy(b[m],a[i]);
+					c[m] = 1;
+					m++;
+				}
+			}
+		}
+		puts(b[popest]);
+	}
+	return 0;
+}
+
 //还存在一些小问题
 #include <stdio.h>
 #include <string.h>
@@ -41,7 +120,7 @@ int main()
 
 
 
-//得再改
+//不可行，，得再改
 #include <stdio.h>
 #include <string.h>
 

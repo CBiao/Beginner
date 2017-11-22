@@ -1,68 +1,34 @@
-//Lowest Common Multiple Plus
-//辗转相除法先算最大公约数 AC too！！
+//统计元音
 #include <stdio.h>
-
-int gbs(int a, int b)
-{
-	if(a<b)	return gbs(b, a);
-	int c , d, e;
-	d = a;
-	e = b;
-	c = d % e;
-	if(!c){
-        return a/e*b;
-	}
-	while(c!=0){
-        d = e;
-        e = c;
-        c = d%e;
-	}
-	return a/e*b;
-}
 
 int main()
 {
-	int n;
-	int a, b;
+	int a, e, i, o, u, n, j;
+	char s[101];
 	while(scanf("%d", &n)==1){
-		a = 1;
+    getchar();
 		while(n--){
-			scanf("%d", &b);
-			a = gbs(a, b);
+      a = e = i = o = u = 0;
+			gets(s);
+			for(j=0;s[j]!='\0';j++){
+				if(s[j]=='a')
+					a++;
+				else if(s[j]=='e')
+					e++;
+				else if(s[j]=='i')
+					i++;
+				else if(s[j]=='o')
+					o++;
+				else if(s[j]=='u')
+					u++;
+			}
+			printf("a:%d\n", a);
+			printf("e:%d\n", e);
+			printf("i:%d\n", i);
+			printf("o:%d\n", o);
+			printf("u:%d\n", u);
+			if(n)	putchar('\n');
 		}
-		printf("%d\n", a);
-	}
-	return 0;
-}
-
-
-//可能会产生大数
-//先计算最大公约数，再求得最小公倍数，这里求最大公约数用穷举法
-#include <stdio.h>
-
-int gbs(int a, int b)
-{
-	if(a<b)	return gbs(b, a);
-	int i;
-	for(i=b;i>=1;i--){
-        if(a%i==0&&b%i==0){
-            return a/i*b;
-        }
-	}
-	return 0;
-}
-
-int main()
-{
-	int n;
-	int a, b;
-	while(scanf("%d", &n)==1){
-		a = 1;
-		while(n--){
-			scanf("%d", &b);
-			a = gbs(a, b);
-		}
-		printf("%d\n", a);
 	}
 	return 0;
 }
