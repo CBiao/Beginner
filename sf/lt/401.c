@@ -1,3 +1,5 @@
+//Palindromes, UVa401
+
 //作者版本
 #include <stdio.h>
 #include <string.h>
